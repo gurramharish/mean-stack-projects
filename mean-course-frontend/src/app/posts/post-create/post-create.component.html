@@ -1,13 +1,33 @@
 <!-- <textarea rows=6  [value]="newPost" #postInput></textarea> -->
 <!-- Getting the value from input fields using reference -->
 <mat-card>
-  <mat-form-field>
-    <input type="text" matInput placeholder="Enter Title..." [(ngModel)]="enteredTitle"/>
-  </mat-form-field>
-  <mat-form-field>
-    <textarea rows="6" matInput placeholder="Enter Content.." [(ngModel)]="enteredContent"></textarea>
-  </mat-form-field>
-  <button mat-raised-button  color="primary" (click)="onAddPost()" [disabled]="!this.enteredContent || !this.enteredTitle">Save Post</button>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+      <mat-form-field>
+          <input
+            type="text"
+            matInput placeholder="Title"
+            name="title"
+            required
+            minlength="3"
+            ngModel
+            #title="ngModel"
+            />
+            <mat-error *ngIf="title.invalid">Please enter the title</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <textarea
+            rows="6"
+            matInput placeholder="Content"
+            name="content"
+            required
+            minlength="10"
+            ngModel
+            #content="ngModel"
+            ></textarea>
+            <mat-error *ngIf="content.invalid">Please enter the content</mat-error>
+        </mat-form-field>
+        <button mat-raised-button  color="primary">Save Post</button>
+  </form>
 </mat-card>
 
 
