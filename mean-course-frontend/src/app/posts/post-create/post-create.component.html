@@ -1,0 +1,14 @@
+<!-- <textarea rows=6  [value]="newPost" #postInput></textarea> -->
+<!-- Getting the value from input fields using reference -->
+<mat-card>
+  <mat-form-field>
+    <textarea matInput [(ngModel)]="enteredValue"></textarea>
+  </mat-form-field>
+
+    <button mat-raised-button color="primary" class="btn btn-danger" (click)="onAddPost()">Save Post</button>
+    <p>
+      {{enteredValue}}
+    </p>
+</mat-card>
+
+
