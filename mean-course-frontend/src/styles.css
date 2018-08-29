@@ -2,3 +2,15 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Roboto', sans-serif; }
+.red{
+  background: #dc3545!important;
+  color: #ffffff;
+}
+
+.app-btn-primary {
+  background: -webkit-linear-gradient(45deg,#d4145a,#fbb03b);
+  background: -o-linear-gradient(45deg,#d4145a,#fbb03b);
+  background: linear-gradient(45deg,#d4145a,#fbb03b);
+  border: none;
+  color: #ffffff;
+}

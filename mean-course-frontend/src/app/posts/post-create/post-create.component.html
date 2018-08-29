@@ -2,13 +2,12 @@
 <!-- Getting the value from input fields using reference -->
 <mat-card>
   <mat-form-field>
-    <textarea matInput [(ngModel)]="enteredValue"></textarea>
+    <input type="text" matInput placeholder="Enter Title..." [(ngModel)]="enteredTitle"/>
   </mat-form-field>
-
-    <button mat-raised-button color="primary" class="btn btn-danger" (click)="onAddPost()">Save Post</button>
-    <p>
-      {{enteredValue}}
-    </p>
+  <mat-form-field>
+    <textarea rows="6" matInput placeholder="Enter Content.." [(ngModel)]="enteredContent"></textarea>
+  </mat-form-field>
+  <button mat-raised-button  color="primary" (click)="onAddPost()" [disabled]="!this.enteredContent || !this.enteredTitle">Save Post</button>
 </mat-card>
 
 
