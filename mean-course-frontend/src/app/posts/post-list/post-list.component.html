@@ -1,5 +1,8 @@
-<mat-accordion multi="true"  *ngIf="posts.length !== 0">
+<mat-spinner *ngIf="isLoading"></mat-spinner>
+<!-- <div class="lds-roller" *ngIf="isLoading"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> -->
+<!-- <div class="lds-circle" *ngIf="isLoading"></div> -->
+<mat-accordion multi="true"  *ngIf="posts.length !== 0 && !isLoading">
   <app-post *ngFor="let post of posts" [post]="post"></app-post>
 </mat-accordion>
-<p class="info-txt mat-body-1" *ngIf="posts.length <= 0">No posts exists!!</p>
+<p class="info-txt mat-body-1" *ngIf="posts.length <= 0 && !isLoading">No posts exists!!</p>
 

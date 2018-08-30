@@ -1,7 +1,8 @@
 <!-- <textarea rows=6  [value]="newPost" #postInput></textarea> -->
 <!-- Getting the value from input fields using reference -->
 <mat-card>
-  <form (submit)="onAddPost(postForm)" #postForm="ngForm">
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form (submit)="onAddPost(postForm)" #postForm="ngForm" *ngIf="!isLoading">
       <mat-form-field>
           <input
             type="text"
