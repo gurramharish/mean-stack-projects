@@ -9,7 +9,7 @@
             name="title"
             required
             minlength="3"
-            ngModel
+            [ngModel]="post?.title"
             #title="ngModel"
             />
             <mat-error *ngIf="title.invalid">Please enter the title</mat-error>
@@ -21,7 +21,7 @@
             name="content"
             required
             minlength="10"
-            ngModel
+            [ngModel]="post?.content"
             #content="ngModel"
             ></textarea>
             <mat-error *ngIf="content.invalid">Please enter the content</mat-error>
