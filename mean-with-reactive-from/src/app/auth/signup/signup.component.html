@@ -1,8 +1,6 @@
-<!-- <textarea rows=6  [value]="newPost" #postInput></textarea> -->
-<!-- Getting the value from input fields using reference -->
 <mat-card>
   <mat-spinner *ngIf="isLoading"></mat-spinner>
-  <form #form="ngForm" (submit)="onLogin(form)" *ngIf="!isLoading">
+  <form #signUpForm="ngForm" (submit)="onSignUp(signUpForm)" *ngIf="!isLoading">
       <mat-form-field>
           <input
             type="email"
@@ -28,7 +26,7 @@
             />
             <mat-error *ngIf="password.invalid">Please enter password</mat-error>
         </mat-form-field>
-        <button mat-raised-button type="submit" color="primary" >Login</button>
+        <button mat-raised-button type="submit" color="primary">Sign Up</button>
   </form>
 </mat-card>
 
