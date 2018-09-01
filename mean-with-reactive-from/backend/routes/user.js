@@ -53,6 +53,7 @@ router.post("/login", (req, res) => {
     );
     res.status(200).json({
       token,
+      userId: user._id,
       message: 'Login success',
       expiresIn: 3600
     })

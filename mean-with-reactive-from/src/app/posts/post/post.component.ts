@@ -15,14 +15,17 @@ export class PostComponent implements OnInit, OnDestroy {
   @Output('deletePost') deletePost = new EventEmitter<string>();
   userAuthenticated = false;
   authSubscription: Subscription;
+  userId: string;
 
   constructor(public postsService: PostsService, private authService: AuthService) { }
 
   ngOnInit() {
     this.userAuthenticated = this.authService.isAuth();
+    this.userId = this.authService.getUserId();
     this.authSubscription = this.authService.getAuthStatusListener()
                             .subscribe((isAuthenticated) => {
                               this.userAuthenticated = isAuthenticated;
+                              this.userId = this.authService.getUserId();
                             });
   }
 

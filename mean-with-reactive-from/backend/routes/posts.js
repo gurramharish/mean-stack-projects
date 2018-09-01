@@ -33,7 +33,8 @@ router.post("", authMiddleWare, multer({storage}).single('image'), (req, res) =>
   const post = new Post({
     title: req.body.title,
     content: req.body.content,
-    imagePath: `${url}/images/${req.file.filename}`
+    imagePath: `${url}/images/${req.file.filename}`,
+    creator: req.userData.userId
   });
   post.save().then(createdPost => {
     res.status(201).json({
@@ -76,11 +77,17 @@ router.put('/:id', authMiddleWare, (req, res) => {
     title: req.body.title,
     content: req.body.content
   });
-  Post.updateOne({_id: postId}, post)
+  Post.updateOne({_id: postId, creator: req.userData.userId}, post)
   .then((result) => {
-    res.status(200).json({
-      message: "Updated successfully!"
-    })
+    if(result.nModified > 0) {
+      return res.status(200).json({
+        message: "Updated successfully!"
+      })
+    } else {
+      return res.status(401).json({
+        message: 'Auth Failed.'
+      })
+    }
   })
 })
 
@@ -100,11 +107,16 @@ router.get('/:id', (req, res) => {
 router.delete('/:id', authMiddleWare, (req, res) => {
 
   const postId = req.params.id;
-  Post.deleteOne({_id:postId})
-  .then(() => {
-    res.status(200).json({
-      message: 'Post deleted successfully!'
-    })
+  Post.deleteOne({_id:postId, creator: req.userData.userId})
+  .then((result) => {
+    if(result.n > 0) {
+      return res.status(200).json({
+        message: 'Post deleted successfully!'
+      })
+    }
+    res.status(401).json({
+      message: 'Not Authorized to delete.'
+    });
   });
 });
 
