@@ -1,6 +1,6 @@
 {
   "env": {
     "MONGO_ATLAS_PW": "han_217",
-    "JWT_KEY": "use-it-from-properties-for-hash-secret"
+    "JWT_KEY": "ce44c37876b7852bd8f99d0bff64b3d8ddcc936fc98e94d3ca1ba71be3372e36"
   }
 }
