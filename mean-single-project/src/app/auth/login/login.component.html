@@ -1,0 +1,35 @@
+<!-- <textarea rows=6  [value]="newPost" #postInput></textarea> -->
+<!-- Getting the value from input fields using reference -->
+<mat-card>
+  <mat-spinner *ngIf="isLoading"></mat-spinner>
+  <form #form="ngForm" (submit)="onLogin(form)" *ngIf="!isLoading">
+      <mat-form-field>
+          <input
+            type="email"
+            matInput placeholder="E-mail"
+            required
+            #email="ngModel"
+            name="email"
+            email
+            ngModel
+            />
+            <mat-error *ngIf="email.invalid">Please enter valid e-mail.</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <input
+              type="password"
+              matInput
+              placeholder="Password"
+              name="password"
+              ngModel
+              required
+              #password="ngModel"
+            />
+            <mat-error *ngIf="password.invalid">Please enter password</mat-error>
+        </mat-form-field>
+        <button mat-raised-button type="submit" color="primary" >Login</button>
+  </form>
+</mat-card>
+
+
